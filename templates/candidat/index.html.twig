@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidat {% endblock %}
+
+{% block body %}
+    <h1>Candidat </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cand_nom</th>
+                <th>Cand_prenom</th>
+                <th>Cand_email</th>
+                <th>Cand_tel</th>
+                <th>Cand_date_naissance</th>
+                <th>Cand_adresse</th>
+                <th>Ville</th>
+                <th>Cand_code_postal</th>
+                <th>pays</th>
+              
+
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for candidat in candidats %}
+            <tr>
+                <td>{{ candidat.id }}</td>
+                <td>{{ candidat.candNom }}</td>
+                <td>{{ candidat.candPrenom }}</td>
+                <td>{{ candidat.candEmail }}</td>
+                <td>{{ candidat.candTel }}</td>
+                <td>{{ candidat.candDateNaissance ? candidat.candDateNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ candidat.candAdresse }}</td>
+                <td>{{ candidat.ville }}</td>
+                <td>{{ candidat.candCodePostal }}</td>
+                <td>{{ candidat.pays.getIdPays() }}</td>
+               
+                <td>
+                    <a href="{{ path('candidat_show', {'id': candidat.id}) }}">Afficher</a>
+                    <a href="{{ path('candidat_edit', {'id': candidat.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">
+Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

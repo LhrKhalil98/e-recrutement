@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poste{% endblock %}
+
+{% block body %}
+       <div class="col-sm-12" >
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Posts</h4>
+                     </div>
+                  </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+
+    <table class="table table-bordered table-responsive-md table-striped text-center  ">
+        <tbody>
+            <tr>
+                <th>Num</th>
+                <td>{{ poste.id }}</td>
+            </tr>
+            <tr>
+                <th>Date creation</th>
+                <td>{{ poste.dateCreation ? poste.dateCreation|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('poste_edit', {'id': poste.id}) }}">Modifier</a>
+  </div>
+    </div>
+      </div>
+        </div>
+    {{ include('poste/_delete_form.html.twig') }}
+{% endblock %}

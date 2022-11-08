@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Piece Jointe{% endblock %}
+
+{% block body %}
+     <div class="col-sm-12">
+                 <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item" ><a  href="{{ path('piece_jointe_index' ) }}" >Pieces jointe </a></li>
+    
+      <li class="breadcrumb-item active" aria-current="page">Modifier {{piece_jointe.getPieceJointe()}}   </li>
+   </ol>
+</nav>
+        <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Modifier piece jointe  </h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+    {{ include('piece_jointe/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+    {{ include('piece_jointe/_delete_form.html.twig') }}
+    </div>
+    </div>
+    </div>
+{% endblock %}

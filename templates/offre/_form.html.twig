@@ -1,0 +1,48 @@
+     
+
+    {{ form_start(form) }}
+
+                <div class="form-group">
+
+                             {{ form_row(form.intitule_offre) }}
+                </div>
+                     <div class="form-group">
+                             {{ form_row(form.id_categorie) }}
+                    </div>
+                    <div class="form-group">
+                                 {{ form_row(form.posts) }}
+                    </div>
+
+       
+
+                <div class="form-group">
+
+                             {{ form_row(form.societe) }}
+                </div>
+
+                <div class="form-group">
+
+                             {{ form_row(form.lieu) }}
+                </div>
+
+      <div class="form-group">
+    {{ form_row(form.date_debut) }}
+        </div>
+
+    <div class="form-group">
+    {{ form_row(form.date_fin) }}
+    </div>
+
+             <div class="form-group ">
+
+                              {{ form_row(form.description) }}
+                    </div>
+
+             
+         
+
+ <div class="form-group">
+     <button type ="submit "class="btn btn-primary  ">{{ button_label|default('Enregistrer') }}</button>
+
+   </div>
+{{ form_end(form) }}

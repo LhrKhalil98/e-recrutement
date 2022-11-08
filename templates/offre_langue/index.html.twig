@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OffreLangue index{% endblock %}
+
+{% block body %}
+    <h1>OffreLangue index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Mission</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre_langue in offre_langues %}
+            <tr>
+                <td>{{ offre_langue.id }}</td>
+                <td>{{ offre_langue.description }}</td>
+                <td>{{ offre_langue.mission }}</td>
+                <td>
+                    <a href="{{ path('offre_langue_show', {'id': offre_langue.id}) }}">show</a>
+                    <a href="{{ path('offre_langue_edit', {'id': offre_langue.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('offre_langue_new') }}">Create new</a>
+{% endblock %}

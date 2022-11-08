@@ -1,0 +1,53 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}liste de liens {% endblock %}
+
+{% block body %}
+
+
+<div class="col-sm-12" >
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">liste de liens</li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Liste de liens   </h4>
+                     </div>
+                  </div>
+ <div class="card-body">
+ <div class="table-responsive">
+
+    <table  id="datatable" class="table data-table table-striped table-bordered" >
+        <thead>
+            <tr>
+            
+                <th>REF Candidature </th>
+                <th>Date </th>
+                <th>Lien </th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for lien in liens %} 
+         {% for candidat in lien.getCandidatures() %}
+            <tr>
+                <td><a href="{{ path('candidature_show', {'id': candidat.id}) }}">{{candidat.REF}} </a></td>
+                <td>{{lien.date|date('Y-m-d')}}</td>
+                <td>{{lien.lien}}</td>
+           
+            </tr>
+              {% endfor %}
+      {% endfor %}
+
+        </tbody>
+    </table>
+                         </div>
+                     </div>
+                     </div>
+
+</div>
+ {% endblock %}

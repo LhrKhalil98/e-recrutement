@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Region{% endblock %}
+
+{% block body %}
+    <div class="col-sm-12" >
+                     <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item" ><a  href="{{ path('region_index' ) }}" >Regions</a></li>
+    
+      <li class="breadcrumb-item active" aria-current="page">{{region.region }}   </li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Region details  </h4>
+                     </div>
+                  </div>
+ <div class="card-body">
+    <div class="table-responsive">
+
+    <table  class="table data-table table-striped table-bordered">
+        <tbody>
+        <tbody>
+            <tr>
+                <th>Region </th>
+                <td>{{ region.region }}</td>
+            </tr>
+            {% for pay in region.pays %}
+            <tr>
+                <th>{{pay.getIdPays}}</th>
+                <td><form method="post" action="{{ path('sup_pays', {'id2': pay.getIdPays , 'id': region.getIdRegion()}) }}" onsubmit="return confirm('Are you sure ?');">
+                                                      <input type="hidden" name="_method" value="POST">
+                                                      <input type="hidden" name="_token" value="{{ csrf_token('sup' ~ region.getIdRegion()) }}">
+                                                      <button class="btn btn-danger mt-2">Supprimer </button>
+                                 </form></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+       </div>
+        </div>
+            </div>
+  
+
+
+    <a class="btn btn-success " href="{{ path('region_edit', {'id_region': region.idRegion}) }}">Ajouter Pays</a>
+
+    {{ include('region/_delete_form.html.twig') }}
+{% endblock %}

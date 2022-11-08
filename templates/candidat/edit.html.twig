@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Candidat{% endblock %}
+
+{% block body %}
+    <h1>Modifier Candidat</h1>
+
+    {{ include('candidat/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('candidat_index') }}">Retour à la liste</a>
+
+    {{ include('candidat/_delete_form.html.twig') }}
+{% endblock %}

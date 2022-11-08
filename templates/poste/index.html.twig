@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poste {% endblock %}
+
+{% block body %}
+    <h1>Poste </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Num</th>
+               
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for poste in postes %}
+            <tr>
+                <td>{{ poste.id }}</td>
+                <td>
+                    <a  class="btn bg-light -light btn-rounded btn-sm my-0" href="{{ path('poste_show', {'id': poste.id}) }}">Afficher</a>
+                    <a class="btn bg-info-light btn-rounded btn-sm my-0" href="{{ path('poste_edit', {'id': poste.id}) }}">Modifier </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Vide </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('poste_new') }}">Ajouter </a>
+{% endblock %}

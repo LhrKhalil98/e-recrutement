@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offres{% endblock %}
+
+{% block body %}
+
+            <div class="col-sm-12" >
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Offres </h4>
+                     </div>
+                  </div>
+ <div class="card-body">
+    <div class="table-responsive">
+
+    <table  id="datatable" class="table data-table table-striped table-bordered" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date debut</th>
+                <th>Date fin</th>
+                <th>Date creation</th>
+                <th>etat</th>
+                <th>status</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres  %}
+         {% if offre.etat != 'archive' %}
+
+            <tr>
+                <td>{{ offre.url }}</td>
+                <td>{{ offre.dateDebut ? offre.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ offre.dateFin ? offre.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ offre.dateCreation ? offre.dateCreation|date('Y-m-d') : '' }}</td>
+                <td>{{ offre.etat }}</td>
+
+                <td>   
+                         <div class="custom-control custom-switch custom-switch-text custom-switch-color custom-control-inline">
+                            <div class="custom-switch-inner">
+
+
+                                     <input type="checkbox" class="custom-control-input bg-success" id="{{offre.id}}" {% if  offre.status  %} checked {% endif %}>
+                                     <label class="custom-control-label" for="{{offre.id}}" data-on-label="on" data-off-label="off"> </label>
+                          </div>
+                        </div> 
+                </td>
+
+                <td>
+                     <a  href="{{ path('offre_show', {'id': offre.id}) }}" class="badge bg-info-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                         href="#"><i class="dripicons dripicons-pencil "></i></a>
+                      <a  href="{{ path('offre_afficher', {'id': offre.id}) }}" class="badge bg-success-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                         href="#"><i class="lar la-eye"></i></a>
+                                    
+              
+
+                </td>
+            </tr>
+            {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="5">
+Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+            <a class="btn btn-primary"  href="{{ path('offre_new') }}">Ajouter Nouveau</a>
+
+</div>
+ 
+    </div>
+    </div>
+{% endblock %}

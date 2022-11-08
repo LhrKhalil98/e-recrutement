@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Entretien{% endblock %}
+
+{% block body %}
+      <div class="col-sm-12">
+                               <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item" ><a  href="{{ path('candidature_show', {'id': candidat.id} ) }}" >{{candidat.REF}} </a></li>
+      <li class="breadcrumb-item" ><a  href="{{ path('entretien_candidat_show', {'id': candidat.id} ) }}" >Liste Entretien  </a></li>
+      <li class="breadcrumb-item active" ><a href="{{ path('entretien_show', {'id': entretien.id} ) }}" >Details entretien   </a> </li>
+      <li class="breadcrumb-item active" aria-current="page">Modifier  entretien </li>
+   </ol>
+</nav>
+        <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Formulaire Entretien  </h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+    {{ include('entretien/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+              </div>
+       </div>
+    </div>
+
+
+
+    {{ include('entretien/_delete_form.html.twig') }}
+{% endblock %}

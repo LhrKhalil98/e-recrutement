@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New OffreLangue{% endblock %}
+
+{% block body %}
+    <h1>Create new OffreLangue</h1>
+
+    {{ include('offre_langue/_form.html.twig') }}
+
+    <a href="{{ path('offre_langue_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories {% endblock %}
+
+{% block body %}
+ <div class="col-sm-12" >
+  <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+    
+      <li class="breadcrumb-item active" aria-current="page">Categories  </li>
+   </ol>
+</nav>
+                    <div class="card">
+                            <div class="card-header d-flex justify-content-between">
+                            <div class="header-title"> 
+                        
+                                <h4 class="card-title ">Categories </h4>
+                            </div>
+                            </div>
+                    
+                        <div class="card-body">
+                        <div class="table-responsive">
+
+                            <table  id="datatable" class="table data-table table-striped table-bordered" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Categorie</th>
+                <th>Abreviation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie_offre in categorie_offres %}
+            <tr>
+                <td>{{ categorie_offre.id }}</td>
+                <td>{{ categorie_offre.catDescription }}</td>
+                <td>{{ categorie_offre.abreviation }}</td>
+                <td>
+                    <a class="btn bg-info-light btn-rounded btn-sm my-0" href="{{ path('categorie_offre_edit', {'id': categorie_offre.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+   </div>
+            </div>
+                    
+     </div>
+         <a class="btn btn-primary" href="{{ path('categorie_offre_new') }}">Ajouter</a>
+
+{% endblock %}

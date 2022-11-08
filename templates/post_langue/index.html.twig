@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PostLangue index{% endblock %}
+
+{% block body %}
+
+     <div class="col-sm-12" >
+                                   <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+     
+      <li class="breadcrumb-item active" aria-current="page"> Postes  </li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Postes</h4>
+                     </div>
+                  </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+
+    <table class="table table-bordered table-responsive-md table-striped text-center  ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post_langue in post_langues %}
+            <tr>
+                <td>{{ post_langue.id }}</td>
+                <td>{{ post_langue.description }}</td>
+                <td>
+                    <a class="btn bg-info-light btn-rounded btn-sm my-0" class="btn btn-info"  href="{{ path('post_langue_edit', {'id': post_langue.id}) }}">Modifier </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Vide </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+      </div>
+    </div>
+      </div>
+        </div>
+
+    <a  class="btn btn-primary" href="{{ path('post_langue_new') }}">Ajouter</a>
+{% endblock %}

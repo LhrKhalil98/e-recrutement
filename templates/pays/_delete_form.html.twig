@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('pays_delete', {'id_pays': pay.getIdPays()}) }}" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ pay.getIdPays()) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>

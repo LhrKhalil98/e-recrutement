@@ -1,0 +1,82 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}Offre{% endblock %}
+
+{% block body %}
+
+                 <div class="content-page hospi-content">
+                    <div class="container-fluid container-md">
+                        <div class="row">
+                            <div class="col-lg-12 mb-3">
+                                <div class="d-flex align-items-center justify-content-between welcome-content">
+                                    <div class="navbar-breadcrumb">
+                                    </div>
+                </div>
+                </div>
+                    </div>
+               
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-block card-stretch card-height">
+                    <div class="card-header d-flex justify-content-between flex-wrap">
+                        <div class="header-title">
+                            <h3 class="card-title mb-1"> {{offre.getIntituleOffre()}} </h4>
+                            <h5 >  {{ offre.dateDebut ? offre.dateDebut|date('Y.m.d') : '' }} -{{ offre.dateFin ? offre.dateFin|date('Y.m.d') : '' }} </h5>
+                        </div>
+                    
+                    </div>
+                    <div class="card-body">
+                      <div class="row" >
+                          <div class="col-4">
+                                          <h5 class="">Postes</h4>
+                                          <div class="row" >
+                                          {% for  post in offre.getPosts() %}   
+                                          <div class="col-4"> 
+                                                <span class="badge badge-light badge-pill"> {{post.description}}</span>
+
+                                         
+                                          </div>
+                                          {% endfor %}
+                                          
+                                           </div>
+                           </div>
+                          <div class="col-4">
+                                          <h5 class="">Lieu </h4>
+                                          <span class="badge badge-light badge-pill">{{offre.getLieu()}} </span>
+
+                                                     
+                                          
+                           </div>
+                          <div class="col-4">
+                                          <h5 class="">Reference offre </h4>
+                                           <span class="badge badge-light badge-pill"> {{offre.REF()}}</span>
+
+                                                     
+                                          
+                           </div>
+                      </div>
+                                                     <hr>
+
+                      <div class="col-12">
+                                          <h5 class="">Description </h4>
+                                          <p>  {{offre_lang.description|raw }} </p>
+                                                     
+                                          
+                        </div>
+                                                  
+
+            
+
+                 {% if offre.etat == 'en cours' and offre.status ==  true %}         <a href="{{ path('candidat_pay', {'id': offre.url}) }}" class="btn btn-primary rounded-small mt-4">Postuler </a>{% endif %}
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+
+        
+     
+    
+{% endblock %}
+

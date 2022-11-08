@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PieceJointe {% endblock %}
+
+{% block body %}
+           <div class="col-sm-12" >
+                           <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+    
+      <li class="breadcrumb-item active" aria-current="page">Pieces jointe</li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Liste Pieces jointe  </h4>
+                     </div>
+                  </div>
+ <div class="card-body">
+    <div class="table-responsive">
+
+    <table  id="datatable" class="table data-table table-striped table-bordered" >
+        <thead>
+            <tr>
+                <th> piece jointe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for piece_jointe in piece_jointes %}
+            <tr>
+                <td>{{ piece_jointe.getPieceJointe() }}</td>
+                <td>
+                    <a class="btn bg-info-light btn-rounded btn-sm my-0" href="{{ path('piece_jointe_edit', {'id_piece_jointe': piece_jointe.getIdPieceJointe()}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                         </div>
+                     </div>
+                     </div>
+
+
+    <a  class= 'btn btn-primary' href="{{ path('piece_jointe_new') }}">Ajouter </a>
+
+{% endblock %}

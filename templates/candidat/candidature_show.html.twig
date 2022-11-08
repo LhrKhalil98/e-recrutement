@@ -1,0 +1,194 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidat{% endblock %}
+
+{% block body %}
+      <div class="col-sm-12" >
+      
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item  active" aria-current="page">{{candidat.REF}}</li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">{{ candidat.getCandId().getCandNom() }} {{  candidat.getCandId().getCandPrenom() }} </h4>
+                     </div>
+                  </div>
+ <div class="card-body">
+       {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+        {% endfor %} 
+       {% for message in app.flashes('success') %}
+            <div class="alert alert-sucesss">
+                {{ message }}
+            </div>
+        {% endfor %} 
+    <div class="table-responsive">
+
+    <table  class="table data-table table-striped table-bordered">
+        <tbody>
+                   <tr>
+                <th>Poste  </th>
+                <td> {{ candidat.getPoste().getDescription() }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ candidat.getCandId().getCandNom() }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{  candidat.getCandId().getCandPrenom() }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ candidat.getCandId().getCandEmail() }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+          {% set age = date().diff(date(candidat.getCandId().getCandDateNaissance() ? candidat.getCandId().getCandDateNaissance())).y %}
+
+                <td>{{ age }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>+ {{  candidat.getCandId().getPays().getCode() }} {{ candidat.getCandId().getCandTel()}}</td>
+            </tr>
+            <tr>
+                <th>Whatsapp </th>
+                <td>+ {{  candidat.getCandId().getPays().getCode() }} {{ candidat.getCandId().getCandTelWhatsapp()}}</td>
+            </tr>
+        
+         
+            <tr>
+                <th>Pays</th>
+                <td>{{  candidat.getCandId().getPays().getIdPays() }}</td>
+            </tr>
+            <tr>
+                <th>Etat </th>
+                <td>{{  candidat.getEtat() }}</td>
+            </tr>
+               {% if candidat.etat == 'archive'  %}
+            <tr>
+                <th>Phase de rejet</th>
+                <td>{{  candidat.getPhaseRejet() }}</td>
+            </tr>
+            <tr>
+                <th>Cause de rejet </th>
+                <td>{{  candidat.getCauseRejet() }}</td>
+            </tr>
+                {% endif %}
+
+            <tr>
+                <th>Offre  </th>
+                <td><a  class="mt-2 badge badge-primary" href="{{ path('offre_show', {'id': candidat.getRefOffre().getId()}) }}">{{ candidat.getRefOffre().getREF()  }}</a></td>
+            </tr>
+      
+            {% for pjs in  candidat.getCandidaturePjs() %}
+            <tr>
+                <th>{{ pjs.getIdPieceJointe().getPieceJointe()}} </th>
+                <td> <a class="mt-2 badge badge-primary" href="{{asset('assets/file/')}}{{pjs.getDocumment()}}"  > <i class="lar la-eye"></i>  </a>
+                </td>
+               
+            </tr>
+            {% endfor %}
+          
+
+        </tbody>
+    </table> 
+ {% if candidat.accepte == false   %} 
+    {% if candidat.etat == 'phase1'   %}
+  
+
+
+        <a href="{{ path('candidatures_2eme_phase', {'id': candidat.id}) }}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Recuperer"
+                         href="#">Phase 2 </a>
+      {% endif %}
+      {% if candidat.etat == 'phase3' and candidat.accepte == false   %}
+
+     <a href="{{ path('candidatures_accepte', {'id': candidat.id}) }}"  class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Recuperer" 
+                         href="#"> Accepte </a>
+    
+
+
+    {% endif %}
+    {% if candidat.etat == 'phase2'   %}
+    
+             
+ 
+     <a href="{{ path('candidatures_3eme_phase', {'id': candidat.id}) }}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Recuperer"
+                         href="#">Phase 3 </a>
+    {% endif %}
+    {% if candidat.etat == 'archive'  %}
+
+     <a href="{{ path('candidatures_recuperer', {'id': candidat.id}) }}"  class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Recuperer"
+                         href="#">Recuperer </a>
+    {% endif %}
+
+           {% set panier  = app.session.get('panier', []) %} 
+
+          {% if not panier[candidat.id] is defined  %}
+                   <a href="{{ path('app_ajouter', {'id': candidat.id}) }}"   class="btn btn-success" class="btn btn-success-light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Recuperer"
+                         href="#">Envoyer Lien    </a>
+          {% endif %}
+    
+
+    {% if candidat.favorable == false  %}
+
+    <a href="{{ path('candidatures_favoris', {'id': candidat.id}) }}"  class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Recuperer" 
+                         href="#"> Ajouter au Favoris </a>
+    {% endif %}
+
+    <a href="{{ path('candidature_edit', {'id': candidat.id}) }}"  class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="" data-original-title="Recuperer" 
+                         href="#"> Modifier </a>
+                   
+    <a class="btn btn-info" href="{{ path('entretien_candidat_show', {'id': candidat.id}) }}">liste entretien </a>
+   {% endif %}
+    {% if candidat.etat != 'archive'  %}
+        <button type="button" class="btn btn-danger mt-2" data-toggle="modal" data-target="#exampleModal">
+       Rejeter 
+        </button>
+        <!-- Modal -->
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cause de rejet </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+          {{ form_start(form) }}
+  
+                <div class="form-group">
+
+                             {{ form_row(form.cause_rejet) }}
+                </div>
+          
+
+
+
+
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+         </div>
+      </div>
+   </div>
+   </div>
+    {% endif %}
+
+    </div>
+        </div>
+            </div>
+</div>
+    
+
+{% endblock %}

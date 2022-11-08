@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Offre{% endblock %}
+
+{% block body %}
+    <div class="col-sm-12">
+        <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Modifier Offre </h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+    {{ include('offre/_form.html.twig', {'button_label': 'Update'}) }}
+              </div>
+       </div>
+    </div>
+
+{% endblock %}

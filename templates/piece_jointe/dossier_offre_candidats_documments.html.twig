@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Documents {% endblock %}
+
+{% block body %} 
+ <div class="col-sm-12"> 
+        <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+    
+      <li class="breadcrumb-item ">Dossiers   </li>
+      <li class="breadcrumb-item active" aria-current="page">Offres  </li>
+   </ol>
+</nav> 
+<div class="row">
+{% for document in documments %}
+
+            <div class="col-3">
+               <div class="card text-center">
+               <embed src="{{asset('assets/file/dossier.jpg')}}"type="application/pdf"   height="300px" width="100%" class="responsive">
+               <div class="card-body">
+                  <h4 class="card-title">{{document.getIdPieceJointe().getIdPieceJointe()}}</h4>
+                 <a href="{{asset('assets/file/')}}{{document.getDocumment()}}" target="_blank" class="btn btn-primary btn-block">download</a>
+
+                </div>
+               </div>
+            </div>
+{% endfor %}
+  </div>
+            </div>
+{% endblock %}

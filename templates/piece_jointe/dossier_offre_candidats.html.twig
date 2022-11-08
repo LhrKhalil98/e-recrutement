@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dossiers {% endblock %}
+
+{% block body %} 
+ <div class="col-sm-12"> 
+       <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+    
+      <li class="breadcrumb-item ">Dossiers   </li>
+      <li class="breadcrumb-item " > <a  href="{{ path('pjs_offre' ) }}" >Offres</a>   </li>
+      <li class="breadcrumb-item "> <a  href="{{ path('pjs_offre_poste' , {'id': offre.id } ) }}" >{{offre.REF}} </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> {{poste.getDescription()}} </li>
+   </ol>
+</nav>  
+<div class="row">
+{% for candidature in candidatures %}
+
+            <div class="col-3">
+               <div class="card text-center">
+                  <img src="{{asset('assets/file/dossier.jpg')}}"  class="card-img-top" alt="#">
+                  <div class="card-body">
+                     <h4 class="card-title">{{candidature.REF}}</h4>
+                     <a href="{{ path('pjs_offre_candidature_documments', {'id': candidature.id}) }}"  class="btn btn-primary btn-block">Afficher</a>
+                  </div>
+               </div>
+            </div>
+{% endfor %}
+            </div>
+            </div>
+
+{% endblock %}

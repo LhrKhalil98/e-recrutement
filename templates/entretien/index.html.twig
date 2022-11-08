@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretiens{% endblock %}
+
+{% block body %}
+    <h1>Entretiens </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Responsable</th>
+                <th>Date</th>
+                <th>Observation</th>
+                <th>Type</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entretien in entretiens %}
+            <tr>
+                <td>{{ entretien.id }}</td>
+                <td>{{ entretien.responsable }}</td>
+                <td>{{ entretien.date ? entretien.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ entretien.observation }}</td>
+                <td>{{ entretien.type }}</td>
+                <td>{{ entretien.etat ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('entretien_show', {'id': entretien.id}) }}">Afficher</a>
+                    <a href="{{ path('entretien_edit', {'id': entretien.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">
+Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('entretien_new') }}">Ajouter</a>
+{% endblock %}

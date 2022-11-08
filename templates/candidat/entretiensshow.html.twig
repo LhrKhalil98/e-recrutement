@@ -1,0 +1,68 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste d'entretiens {% endblock %}
+
+{% block body %}
+
+<div class="col-sm-12" >
+    <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item" ><a  href="{{ path('candidature_show', {'id': candidat.id} ) }}" >{{candidat.REF}} </a></li>
+      <li class="breadcrumb-item  active" aria-current="page">Liste d'entretiens</li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Entretiens   </h4>
+                     </div>
+                  </div>
+ <div class="card-body">
+      {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+        {% endfor %} 
+   <div id="table" class="table-editable">
+   <span class="table-add float-right mb-3 mr-2">
+    <a   href="{{ path('entretien_new', {'id': candidat.id}) }}" >  
+
+   <button class="btn btn-sm bg-primary"><i
+      class="ri-add-fill"><span class="pl-1">Nouveau entretien</span></i>
+   </button></a>
+   </span>
+   <table class="table table-bordered table-responsive-md table-striped text-center">
+      <thead>
+         <tr>
+            <th>Temps</th>
+            <th>Responsable</th>
+            <th>Type </th>
+            <th>Etat</th>
+            <th>Details</th>
+         </tr>
+      </thead>
+      <tbody>
+     
+             {% for entretien in entretiens %} 
+              
+         <tr>
+            <td contenteditable="true">{{entretien.date|date('d/m/Y H:i:s')}}</td>
+            <td contenteditable="true">{{entretien.responsable}}</td>
+            <td contenteditable="true">{{entretien.type}}</td>
+            <td contenteditable="true">{{entretien.etat ? 'Yes' : 'No'}}</td>
+          
+            <td>
+               <span class="table-remove"> <a href="{{ path('entretien_show', {'id': entretien.id}) }}"> <button type="button"
+                  class="btn bg-info-light btn-rounded btn-sm my-0">Details</button> </a></span>
+            </td>
+         </tr>
+      {% endfor %}
+       
+       
+      </tbody>
+   </table>
+</div>
+</div>
+ {% endblock %}

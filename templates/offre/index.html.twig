@@ -1,0 +1,138 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offres{% endblock %}
+
+{% block body %}
+
+<div class="col-sm-12" >
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Offres</li>
+   </ol>
+</nav>
+                    <div class="card">
+                            <div class="card-header d-flex justify-content-between">
+                            <div class="header-title"> 
+                        
+                                <h4 class="card-title ">Offres </h4>
+                          <hr>
+                                                    
+                            {{ form_start(formFilter) }}
+                        <div class="row" >
+                                        <div class="col ">
+
+                                                    {{ form_row(formFilter.categorie) }}
+                                        </div>
+                                            <div class="col">
+                                                    {{ form_row(formFilter.etat) }}
+                                            </div>
+                                            <div class="  col">
+                                                        {{ form_row(formFilter.status) }}
+                                            </div>
+
+                                            <div class="  col ">
+
+
+                                                    {{ form_row(formFilter.annee) }}
+                                            </div>
+
+                                        <div class="  col">
+
+                                                    {{ form_row(formFilter.debut) }}
+                                        </div>
+
+                                        <div class=" col">
+
+                                                    {{ form_row(formFilter.fin) }}
+                                        </div>
+
+                                        <div class=" col">
+
+                                                   {{ form_row(formFilter.ref) }}
+                                        </div>
+
+                        <div class="form-group">
+                            <button type ="submit "class="btn btn-success  ">{{ button_label|default('Filter') }}</button>
+                        </div>
+                            </div>
+
+
+
+                    
+                            </div>
+                            </div>
+                    
+                        <div class="card-body">
+                        <div class="table-responsive">
+
+                            <table  id="datatable" class="table data-table table-striped table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>REF </th>
+                                        <th>Intitule Offre</th>
+                                        <th>Societe</th>
+                                        <th>Date debut</th>
+                                        <th>Date fin</th>
+                                        <th>Nombre de Candidat</th>
+                                        <th>etat</th>
+                                        <th>status</th>
+
+                                        <th>actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                          {{ form_end(formFilter) }}
+
+                                {% for offre in offres  %}
+
+                                    <tr>
+                                        <td>{{ offre.REF }}</td>
+                                        <td>{{ offre.getIntituleOffre()}}</td>
+                                        <td>{{ offre.getSociete()}}</td>
+
+                                        <td>{{ offre.dateDebut ? offre.dateDebut|date('Y-m-d') : '' }}</td>
+                                        <td>{{ offre.dateFin ? offre.dateFin|date('Y-m-d') : '' }}</td>
+                                        <td>{{offre.getNbCandidats}}</td>
+
+                                        <td>{{ offre.etat }}</td>
+
+                                        <td>   
+                                            {% if  offre.status  %} On {% else %} Off {% endif %}
+                                                          
+                                        </td>
+
+                                        <td>
+                                            <a  href="{{ path('offre_show', {'id': offre.id}) }}" class="badge bg-info-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Parametre"
+                                                href="#"><i class="dripicons dripicons-pencil "></i></a>
+                                            <a  href="{{ path('offre_afficher', {'id': offre.url}) }}" class="badge bg-success-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                                                href="#"><i class="lar la-eye"></i></a>
+                                           
+                                    <a  href="{{ path('offre_documment', {'id': offre.id}) }}" class="badge bg-warning-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                                                href="#"><i class="dripicons dripicons-article"></i></a>
+                                  
+                                    
+
+                                        </td>
+                                    </tr>
+                                   
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">
+Aucun enregistrement trouvé</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                                                            <a class="btn btn-primary"  href="{{ path('offre_new') }}">Ajouter</a>
+
+                        </div>
+                    </div>
+ 
+</div>
+
+
+
+
+{% endblock %}

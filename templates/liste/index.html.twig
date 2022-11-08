@@ -1,0 +1,103 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidatures Valide {% endblock %}
+
+{% block body %}
+<div class="col-sm-12" >
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Liste En Attende </li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Liste Candidatures   </h4>
+                     </div>
+                  </div>
+ <div class="card-body">
+      {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+        {% endfor %} 
+        
+   <div id="table" class="table-editable">
+         <span class="table-add float-right mb-3 mr-2">
+
+         <button class="btn btn-sm bg-primary" data-toggle="modal" data-target="#exampleModal">
+            <span class="pl-1">Envoyer lien  </span>
+         </button>
+         </span>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"> Lien  </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+          {{ form_start(form) }}
+  
+                <div class="form-group">
+
+                             {{ form_row(form.lien) }}
+                </div>
+          
+
+
+
+
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+         </div>
+      </div>
+   </div>
+   </div>
+   <table class="table table-bordered table-responsive-md table-striped text-center">
+      <thead>
+         <tr>
+            <th>REF</th>
+            <th>Email</th>
+            <th>Phase</th>
+            <th>REF Offre</th>
+            <th>Actions</th>
+         </tr>
+      </thead>
+      <tbody>
+     
+             {% for liste in listes %} 
+              
+         <tr>
+            <td ><a href="{{ path('candidature_show', {'id': liste.candidat.id}) }}"> {{ liste.candidat.getREF() }}</a></td>
+            <td >{{ liste.candidat.getCandId().getCandEmail() }}</td>
+            <td >{{ liste.candidat.getEtat()}}</td>
+
+
+                    {% set id = liste.candidat.getRefOffre().getId() %}
+
+           <td > <a href="{{ path('offre_show', {'id': id}) }}">{{ liste.candidat.getRefOffre().getREF()  }}</a></td>
+          
+            <td>
+               <span class="table-remove"> <a href="{{ path('app_supprimer', {'id':  liste.candidat.getId()}) }}"> <button type="button"
+                  class="btn bg-danger-light btn-rounded btn-sm my-0">Supprimer</button> </a></span>
+            </td>
+         </tr>
+      {% endfor %}
+       
+       
+      </tbody>
+   </table>
+</div>
+</div>
+</div>
+</div>
+
+ {% endblock %}

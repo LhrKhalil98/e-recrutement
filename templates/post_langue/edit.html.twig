@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PostLangue{% endblock %}
+
+{% block body %}
+  
+
+   <div class="col-sm-12">
+                                 <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item" ><a  href="{{ path('post_langue_index' ) }}" >Postes </a></li>
+    
+      <li class="breadcrumb-item active" aria-current="page">Modifier  poste {{post_langue.description}} </li>
+   </ol>
+</nav>
+        <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Modifier  Poste </h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    
+    {{ include('post_langue/_form.html.twig', {'button_label': 'Update'}) }}
+   
+<div class="form-group">
+         {{ include('post_langue/_delete_form.html.twig') }}
+         
+                </div>
+ 
+
+                     </div>
+       </div>
+    </div>
+
+{% endblock %}
+ 

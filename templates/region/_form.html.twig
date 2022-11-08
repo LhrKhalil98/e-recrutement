@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+         <div class="form-group">
+                                 {{ form_row(form.region) }}
+                    </div>
+                     <div class="form-group">
+                                 {{ form_row(form.pays) }}
+                    </div>
+
+
+    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Regions{% endblock %}
+
+{% block body %}
+      <div class="col-sm-12" >
+               <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item "><a  href="{{ path('offre_index') }}" > Offres </a></li>
+      <li class="breadcrumb-item" ><a  href="{{ path('offre_show', {'id': offre.id} ) }}" > {{offre.REF}} </a></li>
+      <li class="breadcrumb-item active" aria-current="page">Documments</li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Liste de Regions</h4>
+                     </div>
+                  </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+
+    <table class="table table-bordered table-responsive-md table-striped text-center  ">
+        <thead>
+            <tr>
+                <th>Region</th>
+                <th>Documments Obligatoire</th>
+                <th>Documments Optionelle</th>
+                <th>Actions </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for region in regions|sort %}
+        {% if region.getIdRegion != null  %}
+            <tr>
+                <td>{{ region.region }}</td>
+                <td>
+                {%  for pj in pjs  %}
+                                {% if pj.getRegion().getIdRegion() == region.getIdRegion() and pj.getIsrequired() == true %} 
+                                <p>{{ pj.getIdPsj().getPieceJointe()}}</p>
+                                {% endif %}
+                                {% else %}
+                 {% endfor %}
+
+                </td>
+                <td>
+                      {%  for pj in pjs  %}
+                                {% if pj.getRegion().getIdRegion() == region.getIdRegion() and pj.getIsrequired() == false  %} 
+                                <p>{{ pj.getIdPsj().getPieceJointe()}}</p>
+                                {% endif %}
+                                {% else %}
+                 {% endfor %}
+                </td>
+                <td>
+                
+               <span class="table-remove"> <a href="{{ path('modifier_offre_pjs', {'id': offre.id , 'id2':region.getIdRegion}) }}" > <button {% if offre.status == true %} disabled {% endif %} type="button"
+                  class="btn bg-info-light btn-rounded btn-sm my-0" >Modifier </button> </a></span>
+               <span class="table-remove"> <a href="{{ path('delete_region', {'id': offre.id , 'id2':region.getIdRegion}) }}" > <button {% if offre.status == true %} disabled {% endif %} type="button"
+                  class="btn bg-danger-light btn-rounded btn-sm my-0" >suprimer </button> </a></span>
+            
+                </td>
+
+            </tr>
+                {% endif %}
+
+        {% else %}
+            <tr>
+                <td colspan="2">
+Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a  href="{{ path('offre_pjs', {'id': offre.id }) }}"> <button class="btn btn-primary" {% if offre.status == true %} disabled {% endif %}>Ajouter region </button></a>
+     </div>
+      </div>
+       </div>
+{% endblock %}

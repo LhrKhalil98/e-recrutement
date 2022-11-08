@@ -1,0 +1,36 @@
+
+    {{ form_start(formFilter) }}
+<div class="row" >
+                <div class="col ">
+
+                             {{ form_row(formFilter.categorie) }}
+                </div>
+                     <div class="col">
+                             {{ form_row(formFilter.etat) }}
+                    </div>
+                    <div class="  col">
+                                 {{ form_row(formFilter.status) }}
+                    </div>
+
+                    <div class="  col ">
+
+
+                              {{ form_row(formFilter.annee) }}
+                    </div>
+
+                <div class="  col">
+
+                             {{ form_row(formFilter.debut) }}
+                </div>
+
+                <div class=" col">
+
+                             {{ form_row(formFilter.fin) }}
+                </div>
+
+ <div class=" col">
+     <button type ="submit "class="btn btn-success  ">{{ button_label|default('Filtrer') }}</button>
+   </div>
+      </div>
+
+{{ form_end(formFilter) }}

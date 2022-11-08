@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidatures Phase 2 {% endblock %}
+
+{% block body %}
+      <div class="col-sm-12" >
+      <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page"> Phase 2</li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title ">Liste Candidatures Phase 2  </h4>
+                            <hr>
+                                                    
+                            {{ form_start(formFilter) }}
+                        <div class="row" >
+                                       
+                                            <div class="col">
+                                                    {{ form_row(formFilter.genre) }}
+                                            </div>
+                                            <div class="  col">
+                                                        {{ form_row(formFilter.ref) }}
+                                            </div>
+
+                                            <div class="  col ">
+
+
+                                                    {{ form_row(formFilter.email) }}
+                                            </div>
+
+                                            <div class="  col ">
+
+
+                                                    {{ form_row(formFilter.pays) }}
+                                            </div>
+
+                                            <div class="  col ">
+
+
+                                                    {{ form_row(formFilter.poste) }}
+                                            </div>
+
+                                          
+
+                        <div class=" col">
+                            <button type ="submit "class="btn btn-success  ">{{ button_label|default('Filter') }}</button>
+                        </div>
+                            </div>
+                     </div>
+                  </div>
+ <div class="card-body">
+    <div class="table-responsive">
+
+    <table  id="datatable" class="table data-table table-striped table-bordered" >
+        <thead>
+            <tr>
+                <th>REF</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Whatsapp</th>
+                <th>Age</th>
+                <th>Genre</th>
+                <th>pays</th>
+                <th>Offre </th>
+                <th>Poste</th>
+                <th>details</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for candidat in candidatures %} 
+        {% if candidat.etat == 'phase2' %}
+            <tr>
+                <td>{{ candidat.getREF() }}</td>
+                <td>{{ candidat.getCandId().getCandEmail() }}</td>
+                <td>+ {{  candidat.getCandId().getPays().getCode() }} {{ candidat.getCandId().getCandTel() }}</td>
+                <td>+ {{  candidat.getCandId().getPays().getCode() }} {{ candidat.getCandId().getCandTelWhatsapp() }}</td>
+                {% set age = date().diff(date(candidat.getCandId().getCandDateNaissance() ? candidat.getCandId().getCandDateNaissance())).y %}
+                <td>{{ age }}</td>
+                <td>{{ candidat.getCandId().getSexe() }}</td>
+                <td>{{ candidat.getCandId().getPays().getIdPays() }}</td>
+                            
+                 {% set id = candidat.getRefOffre().getId() %}
+
+                <td> <a class="mt-2 badge badge-primary-light "  href="{{ path('offre_show', {'id': id}) }}">{{ candidat.getRefOffre().getREF()  }}</a></td>
+                <td>{{ candidat.getPoste().getDescription() }}
+                
+                 </td>
+                <td>
+                  <a href="{{ path('candidature_show', {'id': candidat.id}) }}" class="badge bg-info-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                         href="#"><i class="lar la-eye "></i></a>
+                  <a href="{{ path('entretien_candidat_show', {'id': candidat.id}) }}" class="badge bg-primary-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Entretien"
+                         href="#"><i class="fa fa-calendar "></i></a>
+             
+                  {% if candidat.favorable == true  %}
+
+                    <a href="#"  class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Favoris" 
+                                        href="#"><i class="fa fa-star "></i> </a>
+                  {% endif %}
+                                   {% set panier  = app.session.get('panier', []) %} 
+
+                       {% if not panier[candidat.id] is defined  %}
+                  <a  href="{{ path('app_ajouter', {'id': candidat.id}) }}"  class="badge bg-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Interview" 
+                                        href="#"><i class="las la-phone-volume"></i> </a>
+                        {% endif %}
+                </td>
+
+               
+            </tr>
+            {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="10">
+Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+    </div>
+      </div>
+{% endblock %}

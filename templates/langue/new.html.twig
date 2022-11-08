@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NouveauLangue{% endblock %}
+
+{% block body %}
+    <h1>Ajouter Langue</h1>
+
+    {{ include('langue/_form.html.twig') }}
+
+    <a href="{{ path('langue_index') }}">
+Aucun enregistrement trouvé</a>
+{% endblock %}

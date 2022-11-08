@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Langue{% endblock %}
+
+{% block body %}
+    <h1>Modifier Langue</h1>
+
+    {{ include('langue/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('langue_index') }}">Retour à la liste</a>
+
+    {{ include('langue/_delete_form.html.twig') }}
+{% endblock %}

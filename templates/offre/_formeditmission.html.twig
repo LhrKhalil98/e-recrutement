@@ -1,0 +1,26 @@
+      
+
+     {{ form_start(formmission) }}
+
+
+ 
+
+  <div class="modal-body">
+                  <div class="row">
+                     <div class="col">
+                                {{ form_row(formmission.description) }}
+
+                     </div>
+                     <div class="col">
+                            {{ form_row(formmission.mission) }}
+
+                     </div>
+                  </div>
+               
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+             <button type ="submit "class="btn btn-primary  ">{{ button_label|default('Enregister') }}</button>
+         </div>  
+ 
+  {{ form_end(formmission) }}

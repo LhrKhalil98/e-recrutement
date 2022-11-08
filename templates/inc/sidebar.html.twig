@@ -1,0 +1,184 @@
+  <div class="mm-sidebar  sidebar-default">
+          <div class="mm-sidebar-logo d-flex align-items-center justify-content-between">
+              <a href="{{ path('offre_index') }}" class="header-logo">
+                  <img src="{{asset('assets/file/logowe.png')}}" class="img-fluid rounded-normal light-logo" alt="logo">
+                  <img src="{{asset('assets/file/logowe.png')}}" class="img-fluid rounded-normal darkmode-logo" alt="logo">
+              </a>
+              <div class="side-menu-bt-sidebar">
+                  <i class="las la-bars wrapper-menu"></i>
+              </div>
+          </div>
+          <nav class="mm-sidebar-menu">
+                  <ul id="mm-sidebar-toggle" class="side-menu">
+                      <li class="">
+                          <a href="#Dashboards" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                       
+      
+                              <span class="ml-2"> Gestion Offres </span>
+      
+                              <i class="las la-angle-right mm-arrow-right arrow-active"></i>
+                              <i class="las la-angle-down mm-arrow-right arrow-hover"></i>
+                          </a>
+                          <ul id="Dashboards" class="submenu collapse" data-parent="#mm-sidebar-toggle">
+                              <li class="">
+                                  <a href="{{ path('offre_index') }}" class="svg-icon">
+                           
+                                      <span>Offres </span>
+                                  </a>
+                              </li>
+                         
+                          
+                             <li class="">
+                                  <a href="{{ path('post_langue_index') }}" class="svg-icon">
+                           
+                                      <span> Postes </span>
+                                  </a>
+                              </li>
+                          
+                           
+                             <li class="">
+                                  <a href="{{ path('categorie_offre_index') }}" class="svg-icon">
+                           
+                                      <span> Categories  </span>
+                                  </a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="">
+
+                          <a href="#app" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                        
+                              <span class="ml-2">Gestion Candidat</span>
+                              <i class="las la-angle-right mm-arrow-right arrow-active"></i>
+                              <i class="las la-angle-down mm-arrow-right arrow-hover"></i>
+                          </a>
+                            <ul id="app" class="submenu collapse" data-parent="#mm-sidebar-toggle">
+                        
+                                <li class="">
+                                    <a href="{{ path('candidatures_index') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class="">Entrevue Telephonique  </span>
+                                    </a>
+                                </li>
+                        
+                                <li class="">
+                                    <a href="{{ path('candidatures_valide') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class="">Entrevue Préselection </span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="{{ path('candidatures_phase3') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class="">Selection final </span>
+                                    </a>
+                                </li>
+                             
+                        
+                                <li class="">
+                                    <a href="{{ path('candidatures_archive') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class="">Archives </span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="{{ path('app_liste') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class="">Candidatures en attende  </span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="{{ path('app_liens') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class="">Liste de liens </span>
+                                    </a>
+                                </li>
+                            
+                            </ul>
+                      </li>
+                      <li class="">
+
+                          <a href="#table" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                        
+                              <span class="ml-2">Gestion de regions </span>
+                              <i class="las la-angle-right mm-arrow-right arrow-active"></i>
+                              <i class="las la-angle-down mm-arrow-right arrow-hover"></i>
+                          </a>
+                            <ul id="table" class="submenu collapse" data-parent="#mm-sidebar-toggle">
+                        
+                                <li class="">
+                                    <a href="{{ path('region_index') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class="">Region </span>
+                                    </a>
+                                </li>
+                            
+                                  
+                           
+                            
+                            </ul>
+                      </li>  
+                          <li class="">
+
+                          <a href="#aa" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                        
+                              <span class="ml-2">Parametres Pieces jointe</span>
+                              <i class="las la-angle-right mm-arrow-right arrow-active"></i>
+                              <i class="las la-angle-down mm-arrow-right arrow-hover"></i>
+                          </a>
+                            <ul id="aa" class="submenu collapse" data-parent="#mm-sidebar-toggle">
+                        
+                                <li class="">
+                                    <a href="{{ path('piece_jointe_index') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class="">  Pieces jointe</span>
+                                    </a>
+                                </li>
+                                    <li class="">
+                                    <a href="{{ path('pjs_offre') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class=""> Dossiers Pieces jointe </span>
+                                    </a>
+                        
+                            
+                            </ul>
+                      </li>   
+                          <li class="">
+
+                          <a href="#icon" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                        
+                              <span class="ml-2">Utulisateurs </span>
+                              <i class="las la-angle-right mm-arrow-right arrow-active"></i>
+                              <i class="las la-angle-down mm-arrow-right arrow-hover"></i>
+                          </a>
+                            <ul id="icon" class="submenu collapse" data-parent="#mm-sidebar-toggle">
+                        
+                                <li class="">
+                                    <a href="{{ path('user_index') }}" class="svg-icon">
+                                        <i class="">
+                                        
+                                        </i><span class=""> Liste utulisateurs </span>
+                                    </a>
+                                </li>
+                              
+                        
+                            
+                            </ul>
+                      </li>   
+                  
+                  
+                  
+                  
+                  </ul>
+          </nav>
+        
+</div>     

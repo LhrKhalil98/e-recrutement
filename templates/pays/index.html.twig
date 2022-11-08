@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pays {% endblock %}
+
+{% block body %}
+   <div class="col-sm-12" >
+                <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+    
+      <li class="breadcrumb-item active" aria-current="page">Pays</li>
+   </ol>
+</nav>
+             <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                     <div class="header-title"> 
+                  
+                        <h4 class="card-title "> Liste Pays</h4>
+                     </div>
+                  </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+
+    <table class="table table-bordered table-responsive-md table-striped text-center  ">
+        <thead>
+            <tr>
+                <th>Pays</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pay in pays %}
+            <tr>
+                <td>{{ pay.idPays }}</td>
+                <td>
+                    <a class="btn bg-info-light btn-rounded btn-sm my-0"  href="{{ path('pays_edit', {'id_pays': pay.getIdPays()}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                     </div>
+                     </div>
+                     </div>
+
+    <a class="btn btn-primary" href="{{ path('pays_new') }}">Ajouter </a>
+{% endblock %}

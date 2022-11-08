@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Region {{region.region}}  {% endblock %}
+
+{% block body %}
+       <div class="col-sm-12">
+               <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item "><a  href="{{ path('offre_index') }}" > Offres </a></li>
+      <li class="breadcrumb-item" ><a  href="{{ path('offre_show', {'id': offre.id} ) }}" > {{offre.REF}} </a></li>
+      <li class="breadcrumb-item " > <a  href="{{ path('offre_documment', {'id': offre.id} ) }}" >Documments </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> Modifier Region {{region.region}} </li>
+   </ol>
+</nav>
+        <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title"> Modifier Region {{region.region}}    </h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                     {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {{ include('offre/_formpiecejointe.html.twig' , {'button_label': 'Enregistrer'}) }}
+
+
+          </div>
+       </div>
+    </div>
+{% endblock %}
+      {% block stylesheets %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" integrity="sha512-2L0dEjIN/DAmTV5puHriEIuQU/IL3CoPm/4eyZp3bM8dnaXri6lK8u6DC5L96b+YSs9f3Le81dDRZUSYeX4QcQ==" crossorigin="anonymous" />        {% endblock %}
+  {% block JavaScript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js" integrity="sha512-P2W2rr8ikUPfa31PLBo5bcBQrsa+TNj8jiKadtaIrHQGMo6hQM6RdPjQYxlNguwHz8AwSQ28VkBK6kHBLgd/8g==" crossorigin="anonymous"></script>
+   <script>
+   $('select').select2();
+   </script>
+ 
+
+    {% endblock %}

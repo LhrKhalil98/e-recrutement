@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Poste{% endblock %}
+
+{% block body %}
+    <h1>Modifier Poste</h1>
+
+    {{ include('poste/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+    {{ include('poste/_delete_form.html.twig') }}
+{% endblock %}

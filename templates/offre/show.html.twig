@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre{% endblock %}
+
+{% block body %}
+
+
+<div class="col-sm-12" >
+
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item "><a  href="{{ path('offre_index') }}" > Offres </a></li>
+      <li class="breadcrumb-item  active" aria-current="page">{{offre.REF}}</li>
+   </ol>
+</nav>
+         <div class="card card-block">
+                  <div class="card-header d-flex justify-content-between">
+                     <div class="header-title">
+                        <h4 class="card-title mb-0">Offre</h4>
+                     </div>
+                  </div>
+                  <div class="card-body">
+                   {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+        {% endfor %}
+ {# *********************************************************     Categorie    ****************************************************************** #}
+                          <div class= "row">
+                            <div class="col-11">
+
+                              <h4 class="">Categorie  </h4>  
+                           <div class="">
+                              <div class="">                         
+                                 <p class=""> {{offre.getIdCategorie().getCatDescription()}}  </p>
+
+                                
+                              </div>
+                             
+                           </div>
+                            </div>
+                               
+                                   </div>
+                                    <hr>
+ {# ************************************************************   POST    ************************************************************************ #}
+                        <div class= "row">
+                                 <div class="col-12">
+                                          <h4 class="">Poste</h4>
+                                          <div class="row" >
+                                          {% for  post in offre.getPosts() %}   
+                                          <div class="col-2"> 
+                                          {{post.description}}
+                                          </div>
+                                          {% endfor %}
+                                          
+                                           </div>
+                                 </div>
+                             
+
+                                 </div>
+
+
+                               <hr>
+                                                             
+ 
+ {# *********************************************************     Lieu     ****************************************************************** #}
+                          <div class= "row">
+                            <div class="col-11">
+
+                              <h4 class="">Lieu   </h4>  
+                           <div class="">
+                              <div class="">                         
+                                 <p class=""> {{offre.getLieu()}}  </p>
+
+                                
+                              </div>
+                             
+                           </div>
+                            </div>
+                               
+                                   </div>
+                                    <hr>
+ {# *********************************************************     Societe   ****************************************************************** #}
+                          <div class= "row">
+                            <div class="col-11">
+
+                              <h4 class="">Societe </h4>  
+                           <div class="">
+                              <div class="">                         
+                                 <p class=""> {{offre.getSociete()}}  </p>
+
+                                
+                              </div>
+                             
+                           </div>
+                            </div>
+                               
+                                   </div>
+                                    <hr>
+ {# *********************************************************     DATE    ****************************************************************** #}
+                          <div class= "row">
+                            <div class="col-11">
+
+                              <h4 class="">Date  </h4>  
+                           <div class="">
+                              <div class="">                         
+                                 <p class="">Date debut :  {{ offre.dateDebut ? offre.dateDebut|date('Y-m-d') : '' }}  </p>
+
+                                
+                              </div>
+                              <div class="">
+                                <p class="">Date Fin : {{ offre.dateFin ? offre.dateFin|date('Y-m-d') : '' }} </p> 
+                              </div>
+                           </div>
+                            </div>
+                               
+                                   </div>
+                                    <hr>
+
+ 
+
+ {# ***********************************************************  DESCRIPTION  ************************************************************************* #}
+                              <div class= "row">
+                                 <div class="col-12">
+                                    <h4 class="">Description </h4>
+                                   {{offre_lang.description|raw }}
+                                  </div>   
+                                  </div>   
+                                   <hr>
+
+ {# ***********************************************************   MISSION     ************************************************************************* #}
+             
+                   
+ {# *************************************************************   buttonS   ************************************************************ #}
+
+                              
+
+                                 {% if  offre.etat != 'archive' %}<a href="{{ path('offre_archiver', {'id': offre.id}) }}"><button  class="btn mb-1 bg-primary-light">Archive</button> </a>
+
+                                 {% elseif   offre.etat == 'archive' %}<a href="{{ path('offre_desarchiver', {'id': offre.id}) }}"><button   <button  class="btn mb-1 bg-primary-light">Desarchive</button> </a>
+
+                                 {% endif %} 
+                                 {% if offre.status == false %}
+                                 <a href="{{ path('offre_activer', {'id': offre.id}) }}"><button class="btn mb-1 bg-success-light">Publier</button> </a> 
+                                 {% else %} 
+                                 <a href="{{ path('offre_activer', {'id': offre.id}) }}"><button  class="btn mb-1 bg-danger-light" >Retirer</button> </a> 
+                                  {% endif %}
+                                  <a href="{{ path('offre_dupliquer', {'id': offre.id}) }}"><button  class="btn mb-1 bg-info-light">Dupliquer</button> </a>
+
+                                  <a href="{{ path('offre_modifier', {'id': offre.id}) }}"><button class="btn mb-1 bg-secondary-light" >Modifier</button> </a>
+
+                                  <a href="{{ path('offre_documment', {'id': offre.id}) }}"><button  class="btn mb-1 bg-warning-light" > Documments</button> </a>
+
+                         
+                            </div>
+                 </div>
+
+         </div>
+           
+     
+    
+{% endblock %}
+

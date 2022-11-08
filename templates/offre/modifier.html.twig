@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier Offre{% endblock %}
+
+{% block body %}
+     <div class="col-sm-12">
+           <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item "><a  href="{{ path('offre_index') }}" > Offres </a></li>
+      <li class="breadcrumb-item" ><a  href="{{ path('offre_show', {'id': offre.id} ) }}" > {{offre.REF}} </a></li>
+      <li class="breadcrumb-item active" aria-current="page">Modifier</li>
+   </ol>
+</nav>
+        <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Modifier  Offre </h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                          {{ include('offre/_formdupliquer.html.twig') }}
+
+                    </div>
+       </div>
+    </div>
+{% endblock %}
+       {% block stylesheets %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" integrity="sha512-2L0dEjIN/DAmTV5puHriEIuQU/IL3CoPm/4eyZp3bM8dnaXri6lK8u6DC5L96b+YSs9f3Le81dDRZUSYeX4QcQ==" crossorigin="anonymous" />        {% endblock %}
+  {% block JavaScript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js" integrity="sha512-jhV1NyiaGUuhKDn+6sd6nLLKNMUslj3hf7gDf3FcG1F2Fg1W7v6VO5Il1pxCKJeE4+X+/Ktuqx+v/HHpZJ2NOA==" crossorigin="anonymous"></script>
+   <script>
+   $('select').select2();
+   </script>
+   <script>
+         if (jQuery("#offre_missions").length) {
+         var quill = new Quill('#offre_missions', {
+         theme: 'snow'
+         }); } 
+            if (jQuery("#offre_description").length) {
+         var quill = new Quill('#offre_description', {
+         theme: 'snow'
+         }); } 
+    </script>
+
+    {% endblock %}

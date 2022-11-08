@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Bienvenu{% endblock %}</title>
+        <link rel="shortcut icon" href="{{asset('assets/file/logowe.png')}}"/>
+        <link rel="stylesheet" href="{{asset('assets/css/backend-plugin.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/backend.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/vendor/remixicon/fonts/remixicon.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/vendor/@icon/dripicons/dripicons.css')}}">
+        
+        <link rel='stylesheet' href="{{asset('assets/vendor/fullcalendar/core/main.css')}}" />
+        <link rel='stylesheet' href="{{asset('assets/vendor/fullcalendar/daygrid/main.css')}}" />
+        <link rel='stylesheet' href="{{asset('assets/vendor/fullcalendar/timegrid/main.css')}}" />
+        <link rel='stylesheet' href="{{asset('assets/vendor/fullcalendar/list/main.css')}}" />
+        <link rel="stylesheet" href="{{asset('assets/vendor/mapbox/mapbox-gl.css')}}"> 
+        {% block stylesheets %}
+
+        {% endblock %}
+
+      
+    </head>
+ <body class="box-bg mm-hotel">
+    <!-- loader Start -->
+   
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper ">
+        <div class="header-style-1 mm-top-navbar">
+            <div class="container-fluid container-md mm-navbar-custom">
+                <nav class="navbar c-navbar navbar-expand-lg navbar-light px-0">
+                    <div class="mm-navbar-logo d-flex align-items-center justify-content-between">
+                        <i class="ri-menu-line wrapper-menu"></i>
+                        
+                          <img src="{{asset('assets/file/logowe.png')}}" class="img-fluid rounded-normals" alt="logo">                        </a>
+                    </div>
+                    <div class="d-flex align-items-center ml-auto">
+                        <div class="menu-horizontal">
+                            <nav class="mm-sidebar-menu">
+                                <div class="mm-sidebar-logo d-flex align-items-center justify-content-between">
+                                    <a href="{{ path('offre_index') }}" class="header-logo">
+                                         <img src="{{asset('assets/file/logowe.png')}}" class="img-fluid rounded-normal " alt="logo">
+                                         <img src="{{asset('assets/file/logowe.png')}}" class="img-fluid rounded-normal " alt="logo">
+                                    </a>
+                                    <div class="side-menu-bt-sidebar">
+                                        <i class="las la-bars wrapper-menu"></i>
+                                    </div>
+                                </div>
+                                <ul id="mm-sidebar-toggle" class="side-menu d-flex">
+                                 
+                                  
+                                 
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="nav-item nav-icon change-mode">
+                                <div class="custom-control custom-switch custom-switch-icon custom-control-inline">
+                                    <div class="custom-switch-inner">
+                                        <p class="mb-0"> </p>
+                                        <input type="checkbox" class="custom-control-input" id="dark-mode" data-active="true">
+                                        <label class="custom-control-label" for="dark-mode" data-mode="toggle">
+                                            <span class="switch-icon-left">
+                                                <svg class="svg-icon" id="h-moon" width="20" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                                </svg>
+                                            </span>
+                                            <span class="switch-icon-right">
+                                                <svg class="svg-icon" id="h-sun" width="20" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                                                </svg>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-label="Toggle navigation">
+                                <i class="ri-menu-3-line th-line"></i>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav navbar-list align-items-center">
+        
+                                    <li class="nav-item nav-icon search-content">
+                                        <a href="#" class="search-toggle text-primary rounded" id="dropdownSearch"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="ri-search-line"></i>
+                                        </a>
+                                        <div class="mm-search-bar mm-sub-dropdown dropdown-menu"
+                                            aria-labelledby="dropdownSearch">
+                                            <form action="#" class="searchbox p-2">
+                                                <div class="form-group mb-0 position-relative">
+                                                    <input type="text" class="text search-input font-size-12"
+                                                        placeholder="type here to search...">
+                                                    <a href="#" class="search-link"><i class="ri-search-line"></i></a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
+                               
+                             
+        
+                                    <li class="nav-item mt-4 mt-lg-0 full-screen">
+                                        <a href="#" class="" id="btnFullscreen">
+                                            <i class="max"><svg class="svg-icon   text-primary " id="d-3-max" width="20"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" class="feather feather-maximize">
+                                                    <path
+                                                        d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                                                    </path>
+                                                </svg></i>
+                                            <i class="min d-none"><svg class="svg-icon  text-primary " id="d-3-min" width="20"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" class="feather feather-minimize">
+                                                    <path
+                                                        d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3">
+                                                    </path>
+                                                </svg></i>
+                                        </a>
+                                    </li>
+        
+                              
+                                </ul>
+                            </div>
+                        </div>
+        
+                    </div>
+                </nav>
+            </div>
+        </div>     
+           
+
+{% block body %}
+
+    {% endblock %}
+
+
+
+
+    </div>
+        </div>
+    </div>
+   
+ 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Backend Bundle JavaScript -->
+    <script src="{{asset('assets/js/backend-bundle.min.js')}}"></script>
+    
+    <!-- Flextree Javascript-->
+    <script src="{{asset('assets/js/flex-tree.min.js')}}"></script>
+    <script src="{{asset('assets/js/tree.js')}}"></script>
+    
+    <!-- Table Treeview JavaScript -->
+    <script src="{{asset('assets/js/table-treeview.js')}}"></script>
+    
+    <!-- Masonary Gallery Javascript -->
+    <script src="{{asset('assets/js/masonry.pkgd.min.js')}}"></script>
+    <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+    
+    <!-- Mapbox Javascript -->
+    <script src="{{asset('assets/js/mapbox-gl.js')}}"></script>
+    <script src="{{asset('assets/js/mapbox.js')}}"></script>
+    
+    <!-- Fullcalender Javascript -->
+    <script src="{{asset('assets/vendor/fullcalendar/core/main.js')}}"></script>
+    <script src="{{asset('assets/vendor/fullcalendar/daygrid/main.js')}}"></script>
+    <script src="{{asset('assets/vendor/fullcalendar/timegrid/main.js')}}"></script>
+    <script src="{{asset('assets/vendor/fullcalendar/list/main.js')}}"></script>
+    
+    <!-- SweetAlert JavaScript -->
+    <script src="{{asset('assets/js/sweetalert.js')}}"></script>
+    
+    <!-- Vectoe Map JavaScript -->
+    <script src="{{asset('assets/js/vector-map-custom.js')}}"></script>
+    
+    <!-- Chart Custom JavaScript -->
+    <script src="{{asset('assets/js/customizer.js')}}"></script>
+    
+    <!-- Chart Custom JavaScript -->
+    <script src="{{asset('assets/js/chart-custom.js')}}"></script>
+    <script src="{{asset('assets/js/charts/01.js')}}"></script>
+    <script src="{{asset('assets/js/charts/02.js')}}"></script>
+    
+    <!-- slider JavaScript -->
+    <script src="{{asset('assets/js/slider.js')}}"></script>
+    
+    <!-- Emoji picker -->
+    <script src="{{asset('assets/vendor/emoji-picker-element/index.js')}}" type="module"></script>
+    
+    <!-- app JavaScript -->
+    <script src="{{asset('assets/js/app.js')}}"></script>
+     {% block JavaScript %}
+
+        {% endblock %}
+    </body>
+</html>

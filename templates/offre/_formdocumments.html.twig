@@ -1,0 +1,34 @@
+ 
+
+
+     {{ form_start(form , {'action': path('offre_index', { 'id': offre.id })}) }}
+
+
+ 
+
+  <div class="modal-body">
+                  <div class="row">
+                     <div class="col">
+                                {{ form_row(form.region) }}
+
+                     </div>
+                     <div class="col">
+                            {{ form_row(form.pience_jointe) }}
+
+                     </div>
+                     <div class="custom-control custom-checkbox custom-checkbox-color-check custom-control-inline">
+                          
+
+                            {{ form_row(form.Isrequired) }}
+
+                     </div>
+                  </div>
+               
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+             <button type ="submit "class="btn btn-primary " >{{ button_label|default('Enregistrer')  }}</button>
+
+ </div>  
+ 
+  {{ form_end(form) }}

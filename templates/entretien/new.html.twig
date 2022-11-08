@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nouveau Entretien{% endblock %}
+
+{% block body %}
+         <div class="col-sm-12">
+                        <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item" ><a  href="{{ path('candidature_show', {'id': candidat.id} ) }}" >{{candidat.REF}} </a></li>
+      <li class="breadcrumb-item" ><a  href="{{ path('entretien_candidat_show', {'id': candidat.id} ) }}" >Liste d'entretiens  </a></li>
+      <li class="breadcrumb-item active" aria-current="page">Nouveau entretien </li>
+   </ol>
+</nav>
+        <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Formulaire Entretien  </h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+    {{ include('entretien/_form.html.twig') }}
+
+              </div>
+       </div>
+    </div>
+    {% endblock %}

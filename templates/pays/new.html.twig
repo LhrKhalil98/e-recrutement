@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Pays{% endblock %}
+
+{% block body %}
+       <div class="col-sm-12">
+                        <nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item" ><a  href="{{ path('pays_index' ) }}" >Pays</a></li>
+    
+      <li class="breadcrumb-item active" aria-current="page">Nouveau pays  </li>
+   </ol>
+</nav>
+        <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Ajouter Pays </h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+    {{ include('pays/_form.html.twig') }}
+
+    
+
+                        </div>
+
+                    </div>
+
+                    </div>
+
+{% endblock %}
